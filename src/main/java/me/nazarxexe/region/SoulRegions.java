@@ -23,15 +23,16 @@ public class SoulRegions extends PluginBase {
 
     @Override
     public void onEnable() {
-
+        // TODO Пока что YAML потому что проблемы
         regions = new Config(
-                new File(this.getDataFolder(), "regions.json"),
-                Config.JSON
+                new File(this.getDataFolder(), "regions.yaml"),
+                Config.YAML
         );
         chunk = new Config(
-                new File(this.getDataFolder(), "chunk.json"),
-                Config.JSON
+                new File(this.getDataFolder(), "chunk.yaml"),
+                Config.YAML
         );
+        // TODO Пока что YAML потому что проблемы
 
         getServer().getCommandMap().register(
                 "region",

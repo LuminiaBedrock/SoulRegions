@@ -79,12 +79,11 @@ public class PlayerListener implements Listener {
     public void onExplode(EntityExplodeEvent event) {
         System.out.println("explode");
         QueryRegion query = new QueryRegion(region, chunk);
+        // TODO remove
 
-        event.getIgnitions()
+        event.getBlockList()
                 .removeIf((block -> {
-
                     Region rg = query.getRegionByVector(block.asBlockVector3());
-
                     if (rg == null) return false;
 
                     if (!(rg.flags().contains(Flags.EXPLODEABLE.getId()))) return true;
@@ -108,7 +107,7 @@ public class PlayerListener implements Listener {
         int id= e.getBlock().getId();
 
         if ( id == Block.CHEST || id == Block.ENDER_CHEST || id == Block.HOPPER_BLOCK ||
-            id == Block.DISPENSER || id == Block.DROPPER || id == Block.TRAPPED_CHEST) {
+            id == Block.DISPENSER || id == Block.DROPPER || id == Block.TRAPPED_CHEST ) {
 
             if (!(rg.owner().equals(e.getPlayer().getUniqueId()))) {
                 if (!(rg.flags().contains(Flags.BUILDABLE.getId()))) {
